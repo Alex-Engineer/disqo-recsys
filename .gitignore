@@ -1,0 +1,4 @@
+/data/recsys_data.csv
+/src/notebooks/.ipynb_checkpoints/
+*.joblib
+*.pickle
