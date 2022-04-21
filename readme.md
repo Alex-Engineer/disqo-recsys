@@ -13,6 +13,7 @@ Note: Surveys have a limited lifetime but exact lifetime information is not avai
 (it can be 20 minutes, a week, a month, etc.). If you can create a recommendation
 system that pays more attention to newer surveys, it would be better. You can
 disregard this part if it makes the task harder for you.
+
 ---
 # Installation
 create directory ./data and put recsys_data.csv in ./data
@@ -57,15 +58,21 @@ python inference.py
 I research dataset, find anomalies in user and items. I conducted simple experiments and made prototype.
 
 Things that I can do if have more time:
-* Better fit models
-* Make web app with FastApi
-* Add sql database for web app
+* Better fit model and try other models
+* Make a web app with FastApi
+* Add SQL database for web app
 * Make docker
 
 
-Unfortunately I did not have time to study the question of how adding unsuccessful surveys to data will change the result
-I didn't have time to make a recommender system that would pay more attention to new surveys, but I have ideas.
-Each surveys can be assigned an expiration date and will simply be excluded from the recommendation results.
-For each item, you can assign a weight from 0 to 1 (where 1 is the newest item, 0 is the oldest item) and
-multiply the received from model scores for items by the given vector.
+Unfortunately, I did not have time to study the question of how adding unsuccessful surveys to data will
+change the result. Also, I didn't have time to make a recommender system that would pay more attention
+to new surveys, but I have ideas. Each survey can be assigned an expiration date.
+Expired surveys will simply be excluded from the recommendation results. 
+For each survey, we can assign a weight from 0 to 1 (where 1 is the newest survey, 0 is the oldest survey)
+and multiply the received scores from model by the weights vector.
+weights = [0 , 0.5, 1]
+scores = [ 3, 2 ,1]
+new_scores = weights*scores = [0, 1, 1]
+
+All this questions can be discussed in interview.
 
